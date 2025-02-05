@@ -20,8 +20,11 @@ body {
 }
 
 #question {
-    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the question */
-    font-size: 52px; /* Set font size for the question */
+    /* font-family: 'Sacramento', cursive; Apply Sacramento font to the question */
+    font-family: 'Lobster', cursive; /* Apply Sacramento font to the question */
+    font-size: 40px; /* Set font size for the question */
+    color: #9e223a;
+    /* -webkit-text-stroke: 1px white; */
 }
 
 #options {
@@ -32,9 +35,21 @@ button {
     padding: 10px 20px; /* Set padding for buttons */
     margin: 0 10px; /* Set margin around buttons */
     font-size: 26px; /* Set font size for buttons */
-    font-family: 'Sacramento', cursive; /* Apply Sacramento font to the options */
-    background-color: #FB607F; /* Set button background color */
+    font-family: 'Lobster', cursive; /* Apply Sacramento font to the options */
+    background-color: #9e223a; /* Set button background color */
     color: white; /* Set text color to white */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    padding: 10px 20px; /* Set padding for buttons */
+    margin: 0 10px; /* Set margin around buttons */
+    font-size: 26px; /* Set font size for buttons */
+    font-family: 'Lobster', cursive; /* Apply Sacramento font to the options */
+    background-color: white; /* Set button background color */
+    color: #9e223a; /* Set text color to white */
     border: none; /* Remove button border */
     cursor: pointer; /* Set cursor to pointer on hover */
 }

@@ -1,33 +1,57 @@
 // script.js
 
 // Function to handle button click events
+var clickedNoNum = 0;
 function selectOption(option) {
     // Check which option was clicked
-    if (option === 'yes') {
-        document.getElementById('question').style.display = 'none'; // Hide the question
-        displayCatHeart(); // Display the cat-heart.gif
-    } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
-        document.getElementById('no-button').innerText = 'You sure?'; 
-        // Increase font size of "Yes" button
-        var yesButton = document.getElementById('yes-button');
-        var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
-        yesButton.style.fontSize = newSize + 'px';
+    if (clickedNoNum >= 3) {
+        displayImage("./images/why.gif");
+        document.getElementById('question').innerText = "Why do you hate me??";
+        document.getElementById('options').style.display = 'none';
     } else {
-        // If neither "Yes" nor "No" was clicked, show an alert message
-        alert('Invalid option!');
+        if (option === 'yes') {
+            //displayCatHeart(); // Display the cat-heart.gif
+
+            displayImage("./images/hehe.gif");
+            document.getElementById('question').innerText = "hehe i won";
+            document.getElementById('options').style.display = 'none'; // Hide the buttons
+            
+        } else if (option === 'no') {
+            clickedNoNum += 1;
+            displayImage("./images/dumb_founded-resize.gif")
+            document.getElementById('question').innerText = "You sure about that?\n I'll give you another chance.";
+            
+            if(clickedNoNum == 1) {
+                document.getElementById('no-button').innerText = "Yeah, I'm sure."; 
+                document.getElementById('yes-button').innerText = "Nope, I misclicked."; 
+            } else if(clickedNoNum == 2) {
+                document.getElementById('no-button').innerText = "Yup, I'm certain."; 
+                document.getElementById('yes-button').innerText = "No, I'm joshing."; 
+            } else {
+                document.getElementById('no-button').innerText = "Yes, I hate you."; 
+                document.getElementById('yes-button').innerText = "Nah, I acc like you."; 
+            }
+
+            // Increase font size of "Yes" button
+            // var yesButton = document.getElementById('yes-button');
+            // var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
+            // var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
+            // yesButton.style.fontSize = newSize + 'px';
+        }
+    // } else {
+    //     // If neither "Yes" nor "No" was clicked, show an alert message
+    //     alert('Invalid option!');
     }
 }
 
 // Function to display the cat.gif initially
-function displayImage() {
+var catImage = new Image();
+function displayImage(file) {
     // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
     // Create a new Image element for the cat
-    var catImage = new Image();
     // Set the source (file path) for the cat image
-    catImage.src = './images/initial_question.gif'; // Assuming the cat image is named "cat.gif"
+    catImage.src = file //'./images/hehe2.gif'; // Assuming the cat image is named "cat.gif"
     // When the cat image is fully loaded, add it to the image container
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
@@ -43,7 +67,7 @@ function displayCatHeart() {
     // Create a new Image element for the cat-heart
     var catHeartImage = new Image();
     // Set the source (file path) for the cat-heart image
-    catHeartImage.src = './images/initial_question.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
+    catHeartImage.src = './images/hehe.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
     // When the cat-heart image is fully loaded, add it to the image container
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);
@@ -53,7 +77,7 @@ function displayCatHeart() {
 }
 
 // Display the .gif initially
-displayImage();
+displayImage("./images/hehe2-resize.gif");
 
 // Function to flash rainbow colors and then execute a callback function
 // function flashRainbowColors(callback) { //HE WILL DIE!!!!!!!
